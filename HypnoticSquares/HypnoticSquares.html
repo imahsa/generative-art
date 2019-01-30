@@ -5,7 +5,7 @@
   var context = canvas.getContext('2d');
 
   // var size = window.innerWidth;
-  var size = 400;
+  var size = 600;
   var dpr = window.devicePixelRatio;
   canvas.width = size * dpr;
   canvas.height = size * dpr;
@@ -14,7 +14,7 @@
 
   var finalSize = 3;
   var startSize = size;
-  var startSteps;
+  var startSteps = 4;
   var offset = 2;
   var tileStep = (size - offset * 2) / 7;
   var startSize = tileStep;
@@ -51,6 +51,6 @@ function draw(x, y, width, height, xMovement, yMovement, steps) {
     }
   }
 
-// draw(0, 0, startSize, startSize, 1, 1, startSteps);
+// draw(0, 0, startSize, startSize, -1, -1, startSteps);
 
 </script>
