@@ -1,11 +1,50 @@
 <canvas id='canvas'></canvas>
-
+<!-- George Nees, in 60s -->
 <script>
+  var colors = [
+  '#ffcccc',
+  '#cce6ff',
+  '#ffb3b3',
+  '#b3d9ff',
+  '#99ccff',
+  '#ff9999',
+  '#80bfff',
+  '#ff8080',
+  '#66b3ff',
+  '#ff6666',
+  '#4da6ff',
+  '#ff5050',
+  '#3399ff',
+  '#ff4d4d',
+  '#1a8cff',
+  '#ff3333',
+  '#0080ff',
+  '#ff1a1a',
+  '#0073e6',
+  '#ff0000',
+  '#0066cc',
+  '#e60000',
+  '#0059b3',
+  '#cc0000',
+  '#004d99',
+  '#b30000',
+  '#004080',
+  '#990000',
+  '#003366',
+  '#800000',
+  '#00264d',
+  '#660000',
+  '#001a33',
+  '#4d0000',
+  '#000d1a',
+	'#330000'
+  ];
+
   var canvas = document.querySelector('canvas');
   var context = canvas.getContext('2d');
 
   // var size = window.innerWidth;
-  var size = 400;
+  var size = 600;
   var dpr = window.devicePixelRatio;
   canvas.width = size * dpr;
   canvas.height = size * dpr;
@@ -19,27 +58,31 @@
   var rotateMultiplier = 20;
   var offset = 10;
 
-  function draw(width, height) {
+  function draw(width, height, i) {
     context.beginPath();
     context.rect(-width/2, -height/2, width, height);
+    context.fillStyle = colors[i];
+    context.fill();
+    context.strokeStyle = colors[i];
     context.stroke();
   }
 
   for(var i = squareSize; i <= size - squareSize; i += squareSize) {
     for(var j = squareSize; j <= size - squareSize; j+= squareSize) {
       var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-      var rotateAmt = j / size * Math.PI / 180 * plusOrMinus * Math.random() * rotateMultiplier;
+      var rotateTo = j / size * Math.PI / 180 * plusOrMinus * Math.random() * rotateMultiplier;
 
       plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-      var translateAmt = j / size * plusOrMinus * Math.random() * randomDisplacement;
+      var translateTo = j / size * plusOrMinus * Math.random() * randomDisplacement;
 
       context.save();
       // context.translate(i, j);
 
       //Random translation and rotation
-      context.translate(i + translateAmt + offset, j + offset);
-      context.rotate(rotateAmt);
-      draw(squareSize, squareSize);
+      context.translate(i + translateTo + offset, j + offset);
+      context.rotate(rotateTo);
+      var redOrBlue = Math.floor(Math.random() * 30);
+      draw(squareSize, squareSize, redOrBlue);
       context.restore();
     }
   }
