@@ -1,12 +1,50 @@
 <canvas id='canvas'></canvas>
 
 <script>
+
+var colors = [
+  '#cce6ff',
+  '#ffcccc',
+  '#b3d9ff',
+  '#ffb3b3',
+  '#99ccff',
+  '#ff9999',
+  '#80bfff',
+  '#ff8080',
+  '#66b3ff',
+  '#ff6666',
+  '#4da6ff',
+  '#ff5050',
+  '#3399ff',
+  '#ff4d4d',
+  '#1a8cff',
+  '#ff3333',
+  '#0080ff',
+  '#ff1a1a',
+  '#0073e6',
+  '#ff0000',
+  '#0066cc',
+  '#e60000',
+  '#0059b3',
+  '#cc0000',
+  '#004d99',
+  '#b30000',
+  '#004080',
+  '#990000',
+  '#003366',
+  '#800000',
+  '#00264d',
+  '#660000',
+  '#001a33',
+  '#4d0000',
+  '#000d1a',
+	'#330000'
+  ];
   // It is posted by https://maxwellito.com/ at Tim Holman Generative artisory website
   var canvas = document.querySelector('canvas');
   var context = canvas.getContext('2d');
 
   var size = 400;
-  // var size = window.innerWidth;
   var dpr = window.devicePixelRatio;
   canvas.width = size * dpr;
   canvas.height = size * dpr;
@@ -44,9 +82,9 @@
     context.lineTo(pointC.x, pointC.y);
     context.lineTo(pointA.x, pointA.y);
     context.closePath();
-    // var gray = Math.floor(Math.random()*16).toString(16);
-    // context.fillStyle = '#' + gray + gray + gray;
-    // context.fill();
+    var c = Math.floor(Math.random() * 30);
+    context.fillStyle =  colors[(c % 2) === 0 ? c : '#3e9bf9'];
+    context.fill();
     context.stroke();
   }
 
@@ -56,11 +94,11 @@
   for(var y = 0; y < lines.length - 1; y++) {
     odd = !odd;
     dotLine = [];
-    for(var i = 0; i < lines[y].length; i++) {
+    for (var i = 0; i < lines[y].length; i++) {
       dotLine.push(odd ? lines[y][i]   : lines[y+1][i]);
       dotLine.push(odd ? lines[y+1][i] : lines[y][i]);
     }
-    for(var i = 0; i < dotLine.length - 2; i++) {
+    for (var i = 0; i < dotLine.length - 2; i++) {
       drawTriangle(dotLine[i], dotLine[i+1], dotLine[i+2]);
     }
   }
