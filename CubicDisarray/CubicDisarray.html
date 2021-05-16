@@ -40,6 +40,45 @@
 	'#330000'
   ];
 
+  var colors2 = [
+  '#ffcccc',
+  '#ffb3b3',
+  '#ff9999',
+  '#ff8080',
+  '#ff6666',
+  '#ff5050',
+  '#ff4d4d',
+  '#ff3333',
+  '#ff1a1a',
+  '#ff0000',
+  '#e60000',
+  '#cc0000',
+  '#b30000',
+  '#990000',
+  '#800000',
+  '#660000',
+  '#4d0000',
+	'#330000',
+  '#cce6ff',
+  '#b3d9ff',
+  '#99ccff',
+  '#80bfff',
+  '#66b3ff',
+  '#4da6ff',
+  '#3399ff',
+  '#1a8cff',
+  '#0080ff',
+  '#0073e6',
+  '#0066cc',
+  '#0059b3',
+  '#004d99',
+  '#004080',
+  '#003366',
+  '#00264d',
+  '#001a33',
+  '#000d1a'
+  ];
+
   var canvas = document.querySelector('canvas');
   var context = canvas.getContext('2d');
 
@@ -81,7 +120,7 @@
       //Random translation and rotation
       context.translate(i + translateTo + offset, j + offset);
       context.rotate(rotateTo);
-      var redOrBlue = Math.floor(Math.random() * 30);
+      var redOrBlue = Math.floor(Math.random() * 30) ;
       draw(squareSize, squareSize, redOrBlue);
       context.restore();
     }
