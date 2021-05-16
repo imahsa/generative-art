@@ -37,6 +37,18 @@ function draw(x, y, width, height, xMovement, yMovement, steps) {
   }
 }
 
+// function timedLoop() {
+//   setTimeout(function () {
+//       displayText(a[i]);
+//       i++;
+//       if(i < a.length) {
+//           timedLoop();
+//       }
+//   }, 2000, x, y, startSize, startSize, xDirection, yDirection, startSteps - 1)
+// }
+
+// timedLoop();
+
   //Draw squares in tiles
   for( var x = offset; x < size - offset; x += tileStep) {
     for( var y = offset; y < size - offset; y += tileStep) {
